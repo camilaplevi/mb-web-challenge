@@ -124,7 +124,21 @@ const next = () => {
     return
   }
 
-  emit('next', { ...formData.value, userType: userType })
+  const dataToEmit = userType === 'pf'
+    ? {
+        name: formData.value.name,
+        cpf: formData.value.cpf,
+        birthdate: formData.value.birthdate,
+        phone: formData.value.phone,
+      }
+    : {
+        companyName: formData.value.companyName,
+        cnpj: formData.value.cnpj,
+        openingDate: formData.value.openingDate,
+        phone: formData.value.phone,
+      };
+
+  emit('next', dataToEmit);
 };
 
 </script>

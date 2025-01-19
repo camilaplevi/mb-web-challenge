@@ -1,9 +1,9 @@
 <template>
   <div class="app">
     <StepOneForm v-if="currentStep === 1" @next="nextStep" />
-    <StepTwoForm v-if="currentStep === 2" @next="nextStep" @back="prevStep" :userType="userType"/>
-    <StepThreeForm v-if="currentStep === 3" @next="nextStep" @back="prevStep"/>
-    <StepFourForm v-if="currentStep === 4" @next="nextStep" @back="prevStep"/>
+    <StepTwoForm v-if="currentStep === 2" @next="nextStep" @back="prevStep" :userType="userType" :formData="formData"/>
+    <StepThreeForm v-if="currentStep === 3" @next="nextStep" @back="prevStep" :formData="formData"/>
+    <StepFourForm v-if="currentStep === 4" @next="nextStep" @back="prevStep" :formData="formData"/>
   </div>
 </template>
 
@@ -16,15 +16,15 @@ import StepFourForm from './components/StepFourForm.vue';
 
 const currentStep = ref(1);
 const userType = ref('');
+const formData = ref({});
 
-const nextStep = (formData) => {
-  if (formData) {
-    if (formData.userType) {
-      userType.value = formData.userType 
-    }
+const nextStep = (data) => {
+  if (data) {
+    if (data.userType) userType.value = data.userType;
+    formData.value = { ...formData.value, ...data };
   }
   if (currentStep.value < 4) {
-    currentStep.value++
+    currentStep.value++;
   }
 };
 
