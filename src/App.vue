@@ -1,14 +1,3 @@
-<template>
-  <div class="app">
-    <StepOneForm v-if="currentStep === 1" @next="nextStep" :userType="userType" />
-    <StepTwoForm v-if="currentStep === 2" @next="nextStep" @back="prevStep" :userType="userType" :formData="formData" />
-    <StepThreeForm v-if="currentStep === 3" @next="nextStep" @back="prevStep" :formData="formData"
-      :userType="userType" />
-    <StepFourForm v-if="currentStep === 4" @next="nextStep" @back="prevStep" :formData="formData"
-      :userType="userType" />
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue';
 import StepOneForm from './components/StepOneForm.vue';
@@ -37,3 +26,14 @@ const prevStep = () => {
 };
 
 </script>
+
+<template>
+  <div class="app">
+    <StepOneForm v-if="currentStep === 1" @next="nextStep" :formData="formData" :userType="userType" />
+    <StepTwoForm v-if="currentStep === 2" @next="nextStep" @back="prevStep" :userType="userType" :formData="formData" />
+    <StepThreeForm v-if="currentStep === 3" @next="nextStep" @back="prevStep" :formData="formData"
+      :userType="userType" />
+    <StepFourForm v-if="currentStep === 4" @next="nextStep" @back="prevStep" :formData="formData"
+      :userType="userType" />
+  </div>
+</template>

@@ -1,3 +1,28 @@
+<script setup>
+import { ref } from 'vue';
+
+const email = ref('')
+const picked = ref('')
+const emit = defineEmits(['next'])
+const currentStep = ref(1)
+
+const next = () => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (email.value && picked.value) {
+    if (!emailRegex.test(email.value)) {
+      alert('Por favor, insira um e-mail válido.')
+      return
+    }
+    const formData = { email: email.value, userType: picked.value }
+    emit('next', formData)
+    console.log(formData)
+  } else {
+    alert('Por favor, preencha todos os campos.')
+  }
+}
+
+</script>
+
 <template>
   <div>
     <p>Etapa <span class="currentStep">{{ currentStep }}</span> de 4</p>
@@ -15,31 +40,6 @@
     </form>
   </div>
 </template>
-
-<script setup>
-
-import { ref } from 'vue';
-
-const email = ref('')
-const picked = ref('')
-const emit = defineEmits(['next'])
-const currentStep = ref(1)
-
-const next = () => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (email.value && picked.value) {
-    if (!emailRegex.test(email.value)) {
-      alert('Por favor, insira um e-mail válido.')
-      return
-    }
-    const formData = { email: email.value, userType: picked.value }
-    emit('next', formData)
-  } else {
-    alert('Por favor, preencha todos os campos.')
-  }
-}
-
-</script>
 
 <style scoped lang="sass">
 
@@ -83,5 +83,5 @@ button
   
 label
   cursor: pointer
-  
+
 </style>

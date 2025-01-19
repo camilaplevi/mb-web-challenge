@@ -1,32 +1,5 @@
-<template>
-    <div>
-        <p>Etapa <span class="currentStep">{{ currentStep }}</span> de 4</p>
-        <h2>Revise suas informações</h2>
-        <form @submit.prevent="submitForm">
-            <div v-if="userType === 'pf'">
-                <p><strong>Nome:</strong> {{ formData.name }}</p>
-                <p><strong>CPF:</strong> {{ formData.cpf }}</p>
-                <p><strong>Data de Nascimento:</strong> {{ formData.birthdate }}</p>
-                <p><strong>Telefone:</strong> {{ formData.phone }}</p>
-            </div>
-            <div v-if="userType === 'pj'">
-                <h3>Dados da Pessoa Jurídica</h3>
-                <p><strong>Razão Social:</strong> {{ formData.companyName }}</p>
-                <p><strong>CNPJ:</strong> {{ formData.cnpj }}</p>
-                <p><strong>Data de Abertura:</strong> {{ formData.openingDate }}</p>
-                <p><strong>Telefone:</strong> {{ formData.phone }}</p>
-            </div>
-            <div class="buttons">
-                <button type="button" @click="back">Voltar</button>
-                <button type="submit">Cadastrar</button>
-            </div>
-        </form>
-    </div>
-</template>
-
 <script setup>
-
-import { ref, defineEmits, defineProps, watch } from 'vue';
+import { ref, defineEmits, defineProps } from 'vue';
 
 const currentStep = ref(4);
 
@@ -54,6 +27,49 @@ const submit = () => {
 };
 
 </script>
+
+<template>
+  <div>
+    <p>Etapa <span class="currentStep">{{ currentStep }}</span> de 4</p>
+    <h2>Revise suas informações</h2>
+    <form @submit.prevent="submitForm">
+      <div v-if="userType === 'pf'">
+        <label for="name"><strong>Nome:</strong></label>
+        <!-- Usando v-model com formData.name -->
+        <input v-model="formData.name" id="name" type="text" required />
+        
+        <label for="cpf"><strong>CPF:</strong></label>
+        <input v-model="formData.cpf" id="cpf" type="text" required />
+
+        <label for="birthdate"><strong>Data de Nascimento:</strong></label>
+        <input v-model="formData.birthdate" id="birthdate" type="date" required />
+
+        <label for="phone"><strong>Telefone:</strong></label>
+        <input v-model="formData.phone" id="phone" type="text" required />
+      </div>
+      
+      <div v-if="userType === 'pj'">
+        <h3>Dados da Pessoa Jurídica</h3>
+        <label for="companyName"><strong>Razão Social:</strong></label>
+        <input v-model="formData.companyName" id="companyName" type="text" required />
+        
+        <label for="cnpj"><strong>CNPJ:</strong></label>
+        <input v-model="formData.cnpj" id="cnpj" type="text" required />
+
+        <label for="openingDate"><strong>Data de Abertura:</strong></label>
+        <input v-model="formData.openingDate" id="openingDate" type="date" required />
+
+        <label for="phone"><strong>Telefone:</strong></label>
+        <input v-model="formData.phone" id="phone" type="text" required />
+      </div>
+
+      <div class="buttons">
+        <button type="button" @click="back">Voltar</button>
+        <button type="submit">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+</template>
 
 <style scoped lang="sass">
   .buttons 
