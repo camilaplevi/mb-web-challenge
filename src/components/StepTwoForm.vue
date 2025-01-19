@@ -37,7 +37,6 @@ StepTwoForm
         </div>
       </div>
 
-      <!-- Botões de ação -->
       <div class="buttons">
         <button type="button" @click="back">Voltar</button>
         <button type="submit">Continuar</button>
@@ -129,37 +128,11 @@ const next = () => {
 
 <style scoped lang="sass">
 
-form 
-  max-width: 400px
-  margin: 0 auto
-
-label 
-  display: flex
-  margin-top: 12px
-  font-weight: bold
-  justify-content: flex-start
-
-input 
-  width: 100%
-  padding: 8px
-  margin-top: 4px
-  border: 1px solid #070707
-  border-radius: 4px
-
-.buttons 
+.buttons
   display: flex
   justify-content: space-between
-  margin-top: 16px
-
-button 
-  padding: 10px 20px
-  border: none
-  border-radius: 4px
-  background-color: #ff9811
-  color: white
-  cursor: pointer
-
-button:hover 
-  background-color: #fda847
   
+button
+  width: 48%
+
 </style>

@@ -39,14 +39,18 @@ const next = () => {
 
 button
   width: 100%
+  margin-top: 10px
 
 #userType
   display: flex
   align-items: center
-  gap: 16px // Espaçamento entre os botões de rádio e os rótulos
+  justify-content: space-around
+
+  label
+    padding-bottom: 9px
 
   input[type="radio"]
-    appearance: none // Remove o estilo padrão do botão de rádio
+    appearance: none 
     width: 16px
     height: 16px
     border: 2px solid black
@@ -55,7 +59,6 @@ button
     cursor: pointer
     position: relative
     background-color: white
-
     &:checked::after
       content: ''
       display: block
@@ -66,10 +69,9 @@ button
       position: absolute
       top: 50%
       left: 50%
-      transform: translate(-50%, -50%) // Centraliza a bolinha interna
+      transform: translate(-50%, -50%) 
 
 label
   cursor: pointer
-  font-weight: bold // Realce nos rótulos
 
 </style>

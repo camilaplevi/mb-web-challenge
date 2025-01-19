@@ -21,36 +21,41 @@ a
     color: #535bf2
 
 body
-    margin: 0
-    display: flex
-    place-items: center
-    min-width: 320px
-    min-height: 100vh
+  margin: 0
+  display: flex
+  place-items: center
+  min-width: 320px
+  min-height: 100vh
+
+p
+  font-weight: 500
 
 label
-    display: flex
-    font-weight: 400
-    margin-top: 12px
+  display: flex
+  font-weight: 500
+  margin-top: 16px
 
 input
-    border: 1px solid #070707
-    border-radius: 4px
-    padding: 8px
-    margin-top: 4px
-    width: 300px
+  border: 1px solid #070707
+  border-radius: 4px
+  padding: 8px
+  margin-top: 4px
+  width: 300px
 
 button
   border: 1px solid transparent
-  padding: 10px 20px
+  border-radius: 8px
+  background-color: #ff942f
+  cursor: pointer
   font-size: 1em
   font-weight: 500
   font-family: inherit
-  background-color: #ff942f
-  cursor: pointer
+  margin-top: 16px
+  padding: 10px 20px
   transition: border-color 0.25s
 
   &:hover
-    border-color:rgb(253, 179, 42)
+    border-color: rgb(253, 179, 42)
 
   &:focus,
   &:focus-visible
@@ -73,4 +78,5 @@ button
     color: #747bff
 
   button
-    background-color:rgb(252, 148, 29)
+    background-color: rgb(252, 148, 29)
+    color: white

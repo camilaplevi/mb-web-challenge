@@ -31,7 +31,3 @@ const prevStep = () => {
 };
 
 </script>
-
-<style>
-
-</style>
