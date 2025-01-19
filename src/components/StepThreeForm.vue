@@ -17,7 +17,7 @@
 <script setup>
 import { ref, defineEmits } from 'vue';
 
-const emit = defineEmits(['back, next']);
+const emit = defineEmits(['back', 'next']);
 
 const currentStep = ref(3);
 
@@ -30,12 +30,15 @@ const back = () => {
 };
 
 const next = () => {
+    
     const isValid = formData.value.password.trim() !== '';
 
     if (!isValid) {
         alert('Preencha o campo de senha.');
         return;
     }
+
+    emit('next', formData.value);
 };
 </script>
 
@@ -44,7 +47,7 @@ const next = () => {
 .buttons
   display: flex
   justify-content: space-between
-  
+
 button
   width: 48%
 
