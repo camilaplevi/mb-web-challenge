@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Etapa 1 de 4</p>
+    <p>Etapa <span class="currentStep">{{ currentStep }}</span> de 4</p>
     <h2>Seja bem vindo(a)</h2>
     <form @submit.prevent="next">
       <label for="email">Endereço de e-mail</label>
@@ -21,8 +21,12 @@
 import { ref } from 'vue';
 
 const email = ref('')
+
 const picked = ref('')
+
 const emit = defineEmits(['next'])
+
+const currentStep = ref(1);
 
 const next = () => {
   if (email.value && picked.value) {
@@ -71,6 +75,10 @@ button
       left: 50%
       transform: translate(-50%, -50%) 
 
+.currentStep 
+  color: orange
+  font-weight: bold
+  
 label
   cursor: pointer
 

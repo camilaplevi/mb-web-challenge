@@ -4,7 +4,7 @@ StepTwoForm
   <div>
     <form @submit.prevent="next">
       <div v-if="userType === 'pf'">
-        <p>Etapa 2 de 4</p>
+        <p>Etapa <span class="currentStep">{{ currentStep }}</span> de 4</p>
         <h2>Pessoa Física</h2>
         <label for="name">Nome</label>
         <input type="text" id="name" v-model="formData.name" required />
@@ -49,6 +49,8 @@ StepTwoForm
 import { ref } from 'vue';
 
 const emit = defineEmits(['back','next']);
+
+const currentStep = ref(2);
 
 const { userType } = defineProps({
   userType: {
@@ -134,5 +136,9 @@ const next = () => {
   
 button
   width: 48%
+
+.currentStep 
+  color: orange
+  font-weight: bold
 
 </style>

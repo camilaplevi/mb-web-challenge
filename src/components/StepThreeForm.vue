@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Etapa 3 de 4</p>
+        <p>Etapa <span class="currentStep">{{ currentStep }}</span> de 4</p>
         <h2>Senha de acesso</h2>
 
         <form @submit.prevent="next">
@@ -18,6 +18,8 @@
 import { ref, defineEmits } from 'vue';
 
 const emit = defineEmits(['back, next']);
+
+const currentStep = ref(3);
 
 const formData = ref({
     password: '',
@@ -45,5 +47,9 @@ const next = () => {
   
 button
   width: 48%
+
+.currentStep 
+  color: orange
+  font-weight: bold
 
 </style>
