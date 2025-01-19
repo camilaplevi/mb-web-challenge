@@ -2,6 +2,7 @@
   <div class="app">
     <StepOneForm v-if="currentStep === 1" @next="nextStep" />
     <StepTwoForm v-if="currentStep === 2" @next="nextStep" @back="prevStep" :userType="userType"/>
+    <StepThreeForm v-if="currentStep === 3" @next="nextStep" @back="prevStep"/>
   </div>
 </template>
 
@@ -9,6 +10,7 @@
 import { ref } from 'vue';
 import StepOneForm from './components/StepOneForm.vue';
 import StepTwoForm from './components/StepTwoForm.vue';
+import StepThreeForm from './components/StepThreeForm.vue';
 
 const currentStep = ref(1);
 const userType = ref('');
