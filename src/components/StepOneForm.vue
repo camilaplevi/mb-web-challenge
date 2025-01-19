@@ -15,7 +15,6 @@ const next = () => {
     }
     const formData = { email: email.value, userType: picked.value }
     emit('next', formData)
-    console.log(formData)
   } else {
     alert('Por favor, preencha todos os campos.')
   }

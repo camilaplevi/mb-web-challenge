@@ -1,5 +1,6 @@
 <script setup>
-import { ref, defineProps } from 'vue';
+import { ref } from 'vue';
+import { toRaw } from 'vue';
 
 const currentStep = ref(4)
 const showPassword = ref(false);
@@ -25,10 +26,50 @@ const back = () => {
   emit('back')
 };
 
-const submit = () => {
-  alert('Cadastro finalizado com sucesso!')
-  emit('next')
-}
+const submit = async () => {
+  try {
+    if (userType === 'pj') {
+      if (!formData.companyName || !formData.cnpj || !formData.openingDate || !formData.phone) {
+        alert('Preencha todos os campos obrigatórios para Pessoa Jurídica');
+        return;
+      }
+    } else if (userType === 'pf') {
+      if (!formData.name || !formData.cpf || !formData.birthdate || !formData.phone) {
+        alert('Preencha todos os campos obrigatórios para Pessoa Física');
+        return;
+      }
+    }
+    
+    const rawData = toRaw(formData);
+    const response = await fetch('http://localhost:3000/registration', {  
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(rawData),
+    });
+
+    console.log(rawData);
+
+    if (response.ok) {
+      const result = await response.json();
+      alert(`Cadastro finalizado com sucesso! ${result.message}`);
+    } else {
+      let errorMessage = 'Erro desconhecido';
+      try {
+        const error = await response.json();
+        errorMessage = error.message || errorMessage;
+      } catch (e) {
+        console.error('Erro ao parsear a resposta de erro', e);
+      }
+      alert(`Erro: ${errorMessage}`);
+    }
+  } catch (error) {
+    alert('Erro ao enviar dados para o servidor.');
+    console.error(error);
+  }
+};
+
 
 </script>
 
@@ -36,10 +77,10 @@ const submit = () => {
   <div>
     <p>Etapa <span class="currentStep">{{ currentStep }}</span> de 4</p>
     <h2>Revise suas informações</h2>
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="submit">
       <div v-if="userType === 'pf'">
-        <label for="name">Endereço de e-mail:</label>
-        <input v-model="formData.email" id="name" type="text" required />
+        <label for="email">Endereço de e-mail:</label>
+        <input v-model="formData.email" id="email" type="text" required />
         <label for="name">Nome:</label>
         <input v-model="formData.name" id="name" type="text" required />
         <label for="cpf">CPF:</label>
@@ -57,8 +98,8 @@ const submit = () => {
       </div>
 
       <div v-if="userType === 'pj'">
-        <label for="name">Endereço de e-mail:</label>
-        <input v-model="formData.email" id="name" type="text" required />
+        <label for="email">Endereço de e-mail:</label>
+        <input v-model="formData.email" id="email" type="text" required />
         <label for="companyName">Razão Social:</label>
         <input v-model="formData.companyName" id="companyName" type="text" required />
         <label for="cnpj">CNPJ:</label>

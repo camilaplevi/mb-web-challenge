@@ -18,7 +18,6 @@ const next = () => {
         return;
     }
     emit('next', formData.value)
-    console.log(formData)
 };
 </script>
 
@@ -54,4 +53,5 @@ button
 .currentStep 
   color: orange
   font-weight: bold
+  
 </style>

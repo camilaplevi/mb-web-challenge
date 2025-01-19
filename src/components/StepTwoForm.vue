@@ -74,7 +74,6 @@ const next = () => {
     return
   }
   emit('next', formData.value);
-  console.log(formData)
 };
 </script>
 
@@ -122,7 +121,6 @@ const next = () => {
     background-color: white
     border-color:  #ff942f
     color: #213547
-    
 .buttons
   display: flex
   justify-content: space-between

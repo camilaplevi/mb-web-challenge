@@ -31,9 +31,7 @@ const prevStep = () => {
   <div class="app">
     <StepOneForm v-if="currentStep === 1" @next="nextStep" />
     <StepTwoForm v-if="currentStep === 2" @next="nextStep" @back="prevStep" :userType="userType" :formData="formData" />
-    <StepThreeForm v-if="currentStep === 3" @next="nextStep" @back="prevStep" :formData="formData"
-      :userType="userType" />
-    <StepFourForm v-if="currentStep === 4" @next="nextStep" @back="prevStep" :formData="formData"
-      :userType="userType" />
+    <StepThreeForm v-if="currentStep === 3" @next="nextStep" @back="prevStep" :userType="userType" :formData="formData" />
+    <StepFourForm v-if="currentStep === 4" @next="nextStep" @back="prevStep" :userType="userType" :formData="formData" />
   </div>
 </template>
