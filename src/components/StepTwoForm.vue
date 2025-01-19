@@ -73,7 +73,7 @@ const next = () => {
     alert('Preencha todos os campos obrigatórios.')
     return
   }
-  emit('next', formData);
+  emit('next', formData.value);
   console.log(formData)
 };
 </script>

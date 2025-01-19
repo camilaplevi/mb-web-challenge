@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineEmits, defineProps } from 'vue';
+import { ref, defineProps } from 'vue';
 
 const currentStep = ref(4);
 
@@ -15,6 +15,7 @@ const { userType, formData } = defineProps({
     required: true,
   },
 });
+console.log(formData)
 
 
 const back = () => {
@@ -34,33 +35,33 @@ const submit = () => {
     <h2>Revise suas informações</h2>
     <form @submit.prevent="submitForm">
       <div v-if="userType === 'pf'">
+        <label for="name"><strong>Endereço de e-mail:</strong></label>
+        <input v-model="formData.email" id="name" type="text" required />
         <label for="name"><strong>Nome:</strong></label>
-        <!-- Usando v-model com formData.name -->
         <input v-model="formData.name" id="name" type="text" required />
-        
         <label for="cpf"><strong>CPF:</strong></label>
         <input v-model="formData.cpf" id="cpf" type="text" required />
-
         <label for="birthdate"><strong>Data de Nascimento:</strong></label>
         <input v-model="formData.birthdate" id="birthdate" type="date" required />
-
         <label for="phone"><strong>Telefone:</strong></label>
         <input v-model="formData.phone" id="phone" type="text" required />
+        <label for="phone"><strong>Senha:</strong></label>
+        <input v-model="formData.password" id="phone" type="password" required />
       </div>
       
       <div v-if="userType === 'pj'">
-        <h3>Dados da Pessoa Jurídica</h3>
+        <label for="name"><strong>Endereço de e-mail:</strong></label>
+        <input v-model="formData.email" id="name" type="text" required />
         <label for="companyName"><strong>Razão Social:</strong></label>
         <input v-model="formData.companyName" id="companyName" type="text" required />
-        
         <label for="cnpj"><strong>CNPJ:</strong></label>
         <input v-model="formData.cnpj" id="cnpj" type="text" required />
-
         <label for="openingDate"><strong>Data de Abertura:</strong></label>
         <input v-model="formData.openingDate" id="openingDate" type="date" required />
-
         <label for="phone"><strong>Telefone:</strong></label>
         <input v-model="formData.phone" id="phone" type="text" required />
+        <label for="phone"><strong>Senha:</strong></label>
+        <input v-model="formData.password" id="phone" type="password" required />
       </div>
 
       <div class="buttons">
