@@ -17,28 +17,28 @@
 <script setup>
 import { ref, defineEmits } from 'vue';
 
-const emit = defineEmits(['back', 'next']);
+const emit = defineEmits(['back', 'next'])
 
-const currentStep = ref(3);
+const currentStep = ref(3)
 
 const formData = ref({
     password: '',
 });
 
 const back = () => {
-    emit('back');
+    emit('back')
 };
 
 const next = () => {
     
-    const isValid = formData.value.password.trim() !== '';
+    const isValid = formData.value.password.trim() !== ''
 
     if (!isValid) {
-        alert('Preencha o campo de senha.');
+        alert('Preencha o campo de senha.')
         return;
     }
 
-    emit('next', formData.value);
+    emit('next', formData.value)
 };
 </script>
 

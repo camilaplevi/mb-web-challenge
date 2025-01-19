@@ -20,7 +20,7 @@ StepTwoForm
       </div>
 
       <div v-if="userType === 'pj'">
-        <p>Etapa 2 de 4</p>
+        <p>Etapa <span class="currentStep">{{ currentStep }}</span> de 4</p>
         <h2>Pessoa Jurídica</h2>
         <div>
           <label for="companyName">Razão Social</label>
@@ -48,7 +48,7 @@ StepTwoForm
 <script setup>
 import { ref } from 'vue';
 
-const emit = defineEmits(['back','next']);
+const emit = defineEmits(['back','next'])
 
 const currentStep = ref(2);
 
@@ -60,6 +60,7 @@ const { userType } = defineProps({
 });
 
 const formData = ref({
+  userType,
   name: '', 
   cpf: '', 
   birthdate: '', 
@@ -87,7 +88,7 @@ const formatCNPJ = () => {
     .replace(/(\d{3})(\d)/, '$1.$2')
     .replace(/(\d{3})(\d{1,4})$/, '$1/$2')
     .replace(/(\d{4})(\d{1,2})$/, '$1-$2')
-    .slice(0, 18); 
+    .slice(0, 18)
 };
 
 // Função para formatar telefone
@@ -110,20 +111,20 @@ const next = () => {
     isValid = formData.value.name.trim() !== '' &&
               formData.value.cpf.trim() !== '' &&
               formData.value.birthdate.trim() !== '' &&
-              formData.value.phone.trim() !== '';
+              formData.value.phone.trim() !== ''
   } else if (userType === 'pj') {
     isValid = formData.value.companyName.trim() !== '' &&
               formData.value.cnpj.trim() !== '' &&
               formData.value.openingDate.trim() !== '' &&
-              formData.value.phone.trim() !== '';
+              formData.value.phone.trim() !== ''
   }
 
   if (!isValid) {
-    alert('Preencha todos os campos obrigatórios.');
-    return;
+    alert('Preencha todos os campos obrigatórios.')
+    return
   }
 
-  emit('next', formData.value);
+  emit('next', { ...formData.value, userType: userType })
 };
 
 </script>

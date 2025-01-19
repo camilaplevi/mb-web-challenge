@@ -26,16 +26,22 @@ const picked = ref('')
 
 const emit = defineEmits(['next'])
 
-const currentStep = ref(1);
+const currentStep = ref(1)
 
 const next = () => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  
   if (email.value && picked.value) {
+    if (!emailRegex.test(email.value)) {
+      alert('Por favor, insira um e-mail válido.')
+      return;
+    }
     const formData = { email: email.value, userType: picked.value }
     emit('next', formData);
   } else {
     alert('Por favor, preencha todos os campos.')
   }
-};
+}
 
 </script>
 
