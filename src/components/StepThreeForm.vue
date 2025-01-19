@@ -2,7 +2,6 @@
     <div>
         <p>Etapa <span class="currentStep">{{ currentStep }}</span> de 4</p>
         <h2>Senha de acesso</h2>
-
         <form @submit.prevent="next">
             <label for="password">Sua senha</label>
             <input type="password" id="password" v-model="formData.password" required />
@@ -17,10 +16,8 @@
 <script setup>
 import { ref, defineEmits } from 'vue';
 
-const emit = defineEmits(['back', 'next'])
-
 const currentStep = ref(3)
-
+const emit = defineEmits(['back', 'next'])
 const formData = ref({
     password: '',
 });
@@ -30,14 +27,11 @@ const back = () => {
 };
 
 const next = () => {
-    
     const isValid = formData.value.password.trim() !== ''
-
     if (!isValid) {
         alert('Preencha o campo de senha.')
         return;
     }
-
     emit('next', formData.value)
 };
 </script>
@@ -54,5 +48,4 @@ button
 .currentStep 
   color: orange
   font-weight: bold
-
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div>
     <p>Etapa <span class="currentStep">{{ currentStep }}</span> de 4</p>
-    <h2>Seja bem vindo(a)</h2>
-    <form @submit.prevent="next">
+    <h2>Seja bem-vindo(a)</h2>
+    <form>
       <label for="email">Endereço de e-mail</label>
       <input v-model="email" type="email" id="email" required />
       <div id="userType">
@@ -11,9 +11,9 @@
         <input type="radio" id="pj" value="pj" v-model="picked" />
         <label for="pj">Pessoa jurídica</label>
       </div>
-    <button type="submit">Continuar</button>
+      <button type="button" @click="next">Continuar</button>
     </form>
-  </div> 
+  </div>
 </template>
 
 <script setup>
@@ -21,23 +21,19 @@
 import { ref } from 'vue';
 
 const email = ref('')
-
 const picked = ref('')
-
 const emit = defineEmits(['next'])
-
 const currentStep = ref(1)
 
 const next = () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  
   if (email.value && picked.value) {
     if (!emailRegex.test(email.value)) {
       alert('Por favor, insira um e-mail válido.')
-      return;
+      return
     }
     const formData = { email: email.value, userType: picked.value }
-    emit('next', formData);
+    emit('next', formData)
   } else {
     alert('Por favor, preencha todos os campos.')
   }
@@ -87,5 +83,5 @@ button
   
 label
   cursor: pointer
-
+  
 </style>

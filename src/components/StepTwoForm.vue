@@ -1,5 +1,3 @@
-StepTwoForm
-
 <template>
   <div>
     <form @submit.prevent="next">
@@ -36,7 +34,6 @@ StepTwoForm
           <input type="tel" id="companyPhone" v-model="formData.phone" required maxlength="15" @input="formatPhone" />
         </div>
       </div>
-
       <div class="buttons">
         <button type="button" @click="back">Voltar</button>
         <button type="submit">Continuar</button>
@@ -48,9 +45,8 @@ StepTwoForm
 <script setup>
 import { ref } from 'vue';
 
-const emit = defineEmits(['back','next'])
-
 const currentStep = ref(2);
+const emit = defineEmits(['back', 'next'])
 
 const { userType } = defineProps({
   userType: {
@@ -61,12 +57,12 @@ const { userType } = defineProps({
 
 const formData = ref({
   userType,
-  name: '', 
-  cpf: '', 
-  birthdate: '', 
+  name: '',
+  cpf: '',
+  birthdate: '',
   phone: '',
   companyName: '',
-  cnpj: '', 
+  cnpj: '',
   openingDate: '',
 });
 
@@ -77,7 +73,7 @@ const formatCPF = () => {
     .replace(/(\d{3})(\d)/, '$1.$2')
     .replace(/(\d{3})(\d)/, '$1.$2')
     .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
-    .slice(0, 14); 
+    .slice(0, 14);
 };
 
 // Função para formatar CNPJ
@@ -97,7 +93,7 @@ const formatPhone = () => {
     .replace(/\D/g, '')
     .replace(/(\d{2})(\d)/, '($1) $2')
     .replace(/(\d{4,5})(\d{4})$/, '$1-$2')
-    .slice(0, 15); 
+    .slice(0, 15);
 };
 
 const back = () => {
@@ -106,39 +102,23 @@ const back = () => {
 
 const next = () => {
   let isValid = true;
-  
   if (userType === 'pf') {
     isValid = formData.value.name.trim() !== '' &&
-              formData.value.cpf.trim() !== '' &&
-              formData.value.birthdate.trim() !== '' &&
-              formData.value.phone.trim() !== ''
+      formData.value.cpf.trim() !== '' &&
+      formData.value.birthdate.trim() !== '' &&
+      formData.value.phone.trim() !== ''
   } else if (userType === 'pj') {
     isValid = formData.value.companyName.trim() !== '' &&
-              formData.value.cnpj.trim() !== '' &&
-              formData.value.openingDate.trim() !== '' &&
-              formData.value.phone.trim() !== ''
+      formData.value.cnpj.trim() !== '' &&
+      formData.value.openingDate.trim() !== '' &&
+      formData.value.phone.trim() !== ''
   }
-
+  console.log(formData)
   if (!isValid) {
     alert('Preencha todos os campos obrigatórios.')
     return
   }
-
-  const dataToEmit = userType === 'pf'
-    ? {
-        name: formData.value.name,
-        cpf: formData.value.cpf,
-        birthdate: formData.value.birthdate,
-        phone: formData.value.phone,
-      }
-    : {
-        companyName: formData.value.companyName,
-        cnpj: formData.value.cnpj,
-        openingDate: formData.value.openingDate,
-        phone: formData.value.phone,
-      };
-
-  emit('next', dataToEmit);
+  emit('next', formData);
 };
 
 </script>
