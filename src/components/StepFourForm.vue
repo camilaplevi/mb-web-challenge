@@ -35,37 +35,37 @@ const submit = () => {
     <h2>Revise suas informações</h2>
     <form @submit.prevent="submitForm">
       <div v-if="userType === 'pf'">
-        <label for="name"><strong>Endereço de e-mail:</strong></label>
+        <label for="name">Endereço de e-mail:</label>
         <input v-model="formData.email" id="name" type="text" required />
-        <label for="name"><strong>Nome:</strong></label>
+        <label for="name">Nome:</label>
         <input v-model="formData.name" id="name" type="text" required />
-        <label for="cpf"><strong>CPF:</strong></label>
+        <label for="cpf">CPF:</label>
         <input v-model="formData.cpf" id="cpf" type="text" required />
-        <label for="birthdate"><strong>Data de Nascimento:</strong></label>
+        <label for="birthdate">Data de Nascimento:</label>
         <input v-model="formData.birthdate" id="birthdate" type="date" required />
-        <label for="phone"><strong>Telefone:</strong></label>
+        <label for="phone">Telefone:</label>
         <input v-model="formData.phone" id="phone" type="text" required />
-        <label for="phone"><strong>Senha:</strong></label>
+        <label for="phone">Senha:</label>
         <input v-model="formData.password" id="phone" type="password" required />
       </div>
       
       <div v-if="userType === 'pj'">
-        <label for="name"><strong>Endereço de e-mail:</strong></label>
+        <label for="name">Endereço de e-mail:</label>
         <input v-model="formData.email" id="name" type="text" required />
-        <label for="companyName"><strong>Razão Social:</strong></label>
+        <label for="companyName">Razão Social:</label>
         <input v-model="formData.companyName" id="companyName" type="text" required />
-        <label for="cnpj"><strong>CNPJ:</strong></label>
+        <label for="cnpj">CNPJ:</label>
         <input v-model="formData.cnpj" id="cnpj" type="text" required />
-        <label for="openingDate"><strong>Data de Abertura:</strong></label>
+        <label for="openingDate">Data de Abertura:</label>
         <input v-model="formData.openingDate" id="openingDate" type="date" required />
-        <label for="phone"><strong>Telefone:</strong></label>
+        <label for="phone">Telefone:</label>
         <input v-model="formData.phone" id="phone" type="text" required />
-        <label for="phone"><strong>Senha:</strong></label>
+        <label for="phone">Senha:</label>
         <input v-model="formData.password" id="phone" type="password" required />
       </div>
 
       <div class="buttons">
-        <button type="button" @click="back">Voltar</button>
+        <button type="button" id="back" @click="back">Voltar</button>
         <button type="submit">Cadastrar</button>
       </div>
     </form>
@@ -73,17 +73,21 @@ const submit = () => {
 </template>
 
 <style scoped lang="sass">
+
+  #back
+    background-color: white
+    border-color:  #ff942f
+    color: #213547
+  
   .buttons 
     display: flex
     justify-content: space-between
   
-  
   button 
     width: 48%
   
-
   .currentStep 
-    color: orange
+    color:  #ff942f
     font-weight: bold
   
   </style>

@@ -109,7 +109,7 @@ const next = () => {
         </div>
       </div>
       <div class="buttons">
-        <button type="button" @click="back">Voltar</button>
+        <button type="button" id="back" @click="back">Voltar</button>
         <button type="submit">Continuar</button>
       </div>
     </form>
@@ -118,6 +118,11 @@ const next = () => {
 
 <style scoped lang="sass">
 
+#back
+    background-color: white
+    border-color:  #ff942f
+    color: #213547
+    
 .buttons
   display: flex
   justify-content: space-between

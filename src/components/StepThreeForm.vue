@@ -30,7 +30,7 @@ const next = () => {
             <label for="password">Sua senha</label>
             <input type="password" id="password" v-model="formData.password" required />
             <div class="buttons">
-                <button type="button" @click="back">Voltar</button>
+                <button type="button" id="back" @click="back">Voltar</button>
                 <button type="submit">Continuar</button>
             </div>
         </form>
@@ -38,6 +38,11 @@ const next = () => {
 </template>
 
 <style scoped lang="sass">
+
+#back
+    background-color: white
+    border-color:  #ff942f
+    color: #213547
 
 .buttons
   display: flex
