@@ -14,8 +14,8 @@ Estilização: SASS
 
 $ git clone https://github.com/camilaplevi/mb-web-challenge.git
 
-1. Instalando Vue + Vite
-> npm create vite@latest
+**1. Instalando Vue + Vite**
+> npm create vite@latest >  Select a framework: » Vue > √ Select a variant: » JavaScript
 
 > npm instal
 
@@ -25,7 +25,7 @@ Front-end no navegador
 
 > http://localhost:5173/
 
-2. Rodar o back-end
+**2. Rodar o back-end**
 
 > npm install express
 
@@ -36,3 +36,11 @@ Front-end no navegador
 Porta do servidor
 
 > http://localhost:3000
+
+**3. Teste de Unidade**
+
+> npm install --save-dev vitest @vitejs/plugin-vue @vue/test-utils
+
+> npm run test
+
+Se você não tiver a dependência jsdm pedirá para instalar no momento de rodar o teste, é só aceitar.
