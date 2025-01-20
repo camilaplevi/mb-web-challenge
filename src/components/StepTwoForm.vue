@@ -57,7 +57,7 @@ const back = () => {
 }
 
 const next = () => {
-  let isValid = true
+  let isValid = true;
   if (userType === 'pf') {
     isValid = formData.value.name.trim() !== '' &&
       formData.value.cpf.trim() !== '' &&

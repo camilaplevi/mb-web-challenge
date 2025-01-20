@@ -8,6 +8,8 @@ Backend: Node.js, Express
 
 Estilização: SASS
 
+Teste de Unidade: Vitest
+
 ## Como rodar o projeto
 
 ### Clone este repositório
