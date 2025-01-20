@@ -10,7 +10,7 @@ Estilização: SASS
 
 ## Como rodar o projeto
 
-# Clone este repositório
+### Clone este repositório
 
 $ git clone https://github.com/camilaplevi/mb-web-challenge.git
 
