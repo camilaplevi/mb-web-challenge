@@ -1,5 +1,38 @@
-# Vue 3 + Vite
+# Cadastro de usuários (Aplicação Web)
+Aplicação de cadastro multietapas que permite ao usuário inserir e validar informações pessoais ou empresariais, revisar os dados fornecidos e submetê-los a uma API de cadastro.
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## ✨ Tecnologias Utilizadas
+Frontend: Vue.js, Vite
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+Backend: Node.js, Express
+
+Estilização: SASS
+
+## Como rodar o projeto
+
+# Clone este repositório
+
+$ git clone https://github.com/camilaplevi/mb-web-challenge.git
+
+1. Instalando Vue + Vite
+> npm create vite@latest
+
+> npm instal
+
+> npm run dev
+
+Front-end no navegador
+
+> http://localhost:5173/
+
+2. Rodar o back-end
+
+> npm install express
+
+> npm install cors
+
+> node server.js
+
+Porta do servidor
+
+> http://localhost:3000
