@@ -5,20 +5,20 @@ const currentStep = ref(3)
 const emit = defineEmits(['back', 'next'])
 const formData = ref({
     password: '',
-});
+})
 
 const back = () => {
     emit('back')
-};
+}
 
 const next = () => {
     const isValid = formData.value.password.trim() !== ''
     if (!isValid) {
         alert('Preencha o campo de senha.')
-        return;
+        return
     }
     emit('next', formData.value)
-};
+}
 </script>
 
 <template>

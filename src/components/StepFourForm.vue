@@ -3,11 +3,11 @@ import { ref } from 'vue';
 import { toRaw } from 'vue';
 
 const currentStep = ref(4)
-const showPassword = ref(false);
+const showPassword = ref(false)
 
 const togglePasswordVisibility = () => {
-  showPassword.value = !showPassword.value;
-};
+  showPassword.value = !showPassword.value
+}
 
 const emit = defineEmits(['back', 'submit'])
 
@@ -24,51 +24,46 @@ const { userType, formData } = defineProps({
 
 const back = () => {
   emit('back')
-};
+}
 
 const submit = async () => {
   try {
     if (userType === 'pj') {
       if (!formData.companyName || !formData.cnpj || !formData.openingDate || !formData.phone) {
-        alert('Preencha todos os campos obrigatórios para Pessoa Jurídica');
-        return;
+        alert('Preencha todos os campos obrigatórios')
+        return
       }
     } else if (userType === 'pf') {
       if (!formData.name || !formData.cpf || !formData.birthdate || !formData.phone) {
-        alert('Preencha todos os campos obrigatórios para Pessoa Física');
-        return;
+        alert('Preencha todos os campos obrigatórios')
+        return
       }
     }
-    
-    const rawData = toRaw(formData);
+    const rawData = toRaw(formData)
     const response = await fetch('http://localhost:3000/registration', {  
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(rawData),
-    });
-
-    console.log(rawData);
+    })
 
     if (response.ok) {
-      const result = await response.json();
-      alert(`Cadastro finalizado com sucesso! ${result.message}`);
+      const result = await response.json()
+      alert(`Cadastro finalizado com sucesso! ${result.message}`)
     } else {
-      let errorMessage = 'Erro desconhecido';
+      let errorMessage = 'Erro desconhecido'
       try {
-        const error = await response.json();
-        errorMessage = error.message || errorMessage;
+        const error = await response.json()
+        errorMessage = error.message || errorMessage
       } catch (e) {
-        console.error('Erro ao parsear a resposta de erro', e);
       }
-      alert(`Erro: ${errorMessage}`);
+      alert(`Erro: ${errorMessage}`)
     }
   } catch (error) {
-    alert('Erro ao enviar dados para o servidor.');
-    console.error(error);
+    alert('Erro ao enviar dados para o servidor.')
   }
-};
+}
 
 
 </script>

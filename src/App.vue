@@ -5,17 +5,17 @@ import StepTwoForm from './components/StepTwoForm.vue';
 import StepThreeForm from './components/StepThreeForm.vue';
 import StepFourForm from './components/StepFourForm.vue';
 
-const currentStep = ref(1);
-const userType = ref('');
-const formData = ref({});
+const currentStep = ref(1)
+const userType = ref('')
+const formData = ref({})
 
 const nextStep = (data) => {
   if (data) {
-    if (data.userType) userType.value = data.userType;
-    formData.value = { ...formData.value, ...data };
+    if (data.userType) userType.value = data.userType
+    formData.value = { ...formData.value, ...data }
   }
   if (currentStep.value < 4) {
-    currentStep.value++;
+    currentStep.value++
   }
 };
 

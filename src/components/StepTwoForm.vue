@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const currentStep = ref(2);
+const currentStep = ref(2)
 const emit = defineEmits(['back', 'next'])
 
 const { userType } = defineProps({
@@ -9,7 +9,7 @@ const { userType } = defineProps({
     type: String,
     required: true,
   }
-});
+})
 
 const formData = ref({
   userType,
@@ -20,7 +20,7 @@ const formData = ref({
   companyName: '',
   cnpj: '',
   openingDate: '',
-});
+})
 
 // Função para formatar CPF
 const formatCPF = () => {
@@ -29,8 +29,8 @@ const formatCPF = () => {
     .replace(/(\d{3})(\d)/, '$1.$2')
     .replace(/(\d{3})(\d)/, '$1.$2')
     .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
-    .slice(0, 14);
-};
+    .slice(0, 14)
+}
 
 // Função para formatar CNPJ
 const formatCNPJ = () => {
@@ -41,7 +41,7 @@ const formatCNPJ = () => {
     .replace(/(\d{3})(\d{1,4})$/, '$1/$2')
     .replace(/(\d{4})(\d{1,2})$/, '$1-$2')
     .slice(0, 18)
-};
+}
 
 // Função para formatar telefone
 const formatPhone = () => {
@@ -49,15 +49,15 @@ const formatPhone = () => {
     .replace(/\D/g, '')
     .replace(/(\d{2})(\d)/, '($1) $2')
     .replace(/(\d{4,5})(\d{4})$/, '$1-$2')
-    .slice(0, 15);
-};
+    .slice(0, 15)
+}
 
 const back = () => {
-  emit('back');
-};
+  emit('back')
+}
 
 const next = () => {
-  let isValid = true;
+  let isValid = true
   if (userType === 'pf') {
     isValid = formData.value.name.trim() !== '' &&
       formData.value.cpf.trim() !== '' &&
@@ -73,8 +73,8 @@ const next = () => {
     alert('Preencha todos os campos obrigatórios.')
     return
   }
-  emit('next', formData.value);
-};
+  emit('next', formData.value)
+}
 </script>
 
 <template>
